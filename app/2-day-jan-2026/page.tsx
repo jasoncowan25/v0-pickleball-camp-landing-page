@@ -49,6 +49,14 @@ export default function TwoDayJan2026Page() {
     }
   }
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault()
+    const targetElement = document.getElementById(targetId)
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   const handleRegistrationOpen = () => {
     setIsRegistrationOpen(true)
   }
@@ -117,24 +125,46 @@ export default function TwoDayJan2026Page() {
               <div className="brand-text text-xl text-primary">Breakaway Pickleball Camps</div>
             </div>
             <nav className="hidden md:flex items-center gap-6">
-              <a href="#program" className="text-primary hover:text-accent transition-colors">
+              <a
+                href="#program"
+                onClick={(e) => handleSmoothScroll(e, "program")}
+                className="text-primary hover:text-accent transition-colors"
+              >
                 Program
               </a>
-              <a href="#schedule" className="text-primary hover:text-accent transition-colors">
+              <a
+                href="#schedule"
+                onClick={(e) => handleSmoothScroll(e, "schedule")}
+                className="text-primary hover:text-accent transition-colors"
+              >
                 Schedule
               </a>
-              <a href="#coach" className="text-primary hover:text-accent transition-colors">
+              <a
+                href="#coach"
+                onClick={(e) => handleSmoothScroll(e, "coach")}
+                className="text-primary hover:text-accent transition-colors"
+              >
                 Coach
               </a>
-              <a href="#pricing" className="text-primary hover:text-accent transition-colors">
+              <a
+                href="#pricing"
+                onClick={(e) => handleSmoothScroll(e, "pricing")}
+                className="text-primary hover:text-accent transition-colors"
+              >
                 Pricing
               </a>
-              <a href="#faq" className="text-primary hover:text-accent transition-colors">
+              <a
+                href="#faq"
+                onClick={(e) => handleSmoothScroll(e, "faq")}
+                className="text-primary hover:text-accent transition-colors"
+              >
                 FAQ
               </a>
               {isRegistrationOpen ? (
                 <Button asChild className="bg-primary hover:bg-blue-700 text-white">
-                  <a href="#register">Reserve Your Spot</a>
+                  <a href="#register" onClick={(e) => handleSmoothScroll(e, "register")}>
+                    Reserve Your Spot
+                  </a>
                 </Button>
               ) : (
                 <Button onClick={scrollToCountdown} className="bg-primary hover:bg-blue-700 text-white">
@@ -152,27 +182,23 @@ export default function TwoDayJan2026Page() {
                 <div className="space-y-4">
                   <Badge className="bg-accent text-accent-foreground">Only 16 spots</Badge>
                   <h1 className="text-5xl lg:text-6xl font-bold text-primary text-balance">
-                    Toronto 2-Day Pickleball Camp for Intermediate Players (January 2026)
+                    16 Players. 2 Days. Big Results.
                   </h1>
-                  <p className="text-xl text-gray-600">
-                    Intermediate 3.0–3.5 players • Indoor pickleball courts • Jan 9–10, 2026
-                  </p>
+                  <p className="text-xl text-gray-600">Intermediate Camp (3.0–3.5) • Toronto • Jan 9–10, 2026</p>
                 </div>
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-accent" />
-                    <span className="text-gray-700">
-                      Pro-led pickleball training at a professional facility in Toronto
-                    </span>
+                    <span className="text-gray-700">Pro-led training at a professional facility</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Users className="h-5 w-5 text-accent" />
-                    <span className="text-gray-700">Small group pickleball clinic, only 16 spots</span>
+                    <span className="text-gray-700">Small group, only 16 spots</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Grid3X3 className="h-5 w-5 text-accent" />
-                    <span className="text-gray-700">4 indoor pickleball courts, everyone on-court the whole time</span>
+                    <span className="text-gray-700">4 courts, everyone on-court the whole time</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Zap className="h-5 w-5 text-accent" />
@@ -244,7 +270,7 @@ export default function TwoDayJan2026Page() {
           <div className="container mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div className="space-y-8">
-                <h2 className="text-4xl font-bold text-primary">Improve Your Game at our Toronto Pickleball Clinic</h2>
+                <h2 className="text-4xl font-bold text-primary">Camp Focus</h2>
                 <div className="grid gap-4">
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
@@ -313,9 +339,7 @@ export default function TwoDayJan2026Page() {
                   alt="Coach demonstrating pickleball drills to intermediate 3.0–3.5 players"
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />
-                <p className="text-center text-gray-600">
-                  Experienced pickleball coach Joey at a pro facility in Toronto
-                </p>
+                <p className="text-center text-gray-600">Coach Joey at a pro facility in Toronto</p>
               </div>
             </div>
           </div>
@@ -328,11 +352,11 @@ export default function TwoDayJan2026Page() {
                 <div className="flex justify-center mb-4">
                   <Calendar className="h-12 w-12 text-accent" />
                 </div>
-                <CardTitle className="text-3xl text-primary">Indoor Winter Pickleball Training in Toronto</CardTitle>
+                <CardTitle className="text-3xl text-primary">2 Full Training Days</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-center">
                 <div className="text-xl font-semibold text-gray-900">Day 1 & Day 2 — 8:00 AM – 4:00 PM</div>
-                <p className="text-gray-600">On-court pickleball lessons with a 1-hour lunch break.</p>
+                <p className="text-gray-600">On-court training with a 1-hour lunch break.</p>
                 <p className="text-sm text-gray-500">Note: Confirm specifics with Camp Director after registration.</p>
               </CardContent>
             </Card>
@@ -347,21 +371,18 @@ export default function TwoDayJan2026Page() {
                   <div className="flex justify-center">
                     <img
                       src="/coach-joey.jpg"
-                      alt="Joey Manchurek, experienced pickleball coach holding trophy and paddle at tournament"
+                      alt="Joey Manchurek, professional pickleball coach and former hockey player, holding trophy and paddle"
                       className="w-48 h-48 rounded-full object-cover shadow-lg"
                     />
                   </div>
                   <div className="md:col-span-2 space-y-4">
-                    <h2 className="text-3xl font-bold text-primary">Joey Manchurek - Experienced Pickleball Coach</h2>
+                    <h2 className="text-3xl font-bold text-primary">Experienced Coach: Joey Manchurek</h2>
                     <div className="space-y-3 text-gray-600">
                       <p>Former pro hockey player (OHL Oshawa Generals Captain; later ECHL).</p>
+                      <p>Grew up playing tennis & table tennis; transitioned quickly to competitive pickleball.</p>
                       <p>
-                        Grew up playing tennis & table tennis; transitioned quickly to competitive pickleball in the
-                        GTA.
-                      </p>
-                      <p>
-                        Actively competes in Ontario pickleball tournaments; coaching focus on leadership, skill
-                        development, and helping intermediate players reach their potential.
+                        Actively competes in tournaments; coaching focus on leadership, skill development, and helping
+                        players reach potential.
                       </p>
                     </div>
                     <blockquote className="text-xl font-semibold text-gray-900 border-l-4 border-accent pl-4">
@@ -378,9 +399,9 @@ export default function TwoDayJan2026Page() {
           <div className="container mx-auto max-w-2xl">
             <Card className="bg-white border-2 border-accent">
               <CardHeader className="text-center">
-                <CardTitle className="text-3xl text-primary">Why Choose Our Pickleball Camp in Canada</CardTitle>
+                <CardTitle className="text-3xl text-primary">Camp Investment</CardTitle>
                 <CardDescription className="text-lg text-gray-600">
-                  $800 CAD — 2 days of intensive pickleball training, pro instruction, snacks and drinks included.
+                  $800 CAD — 2 days, pro instruction, snacks and drinks included.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6 text-center">
@@ -409,26 +430,22 @@ export default function TwoDayJan2026Page() {
               <Card className="bg-white border-gray-200 text-center">
                 <CardContent className="p-6">
                   <MapPin className="h-12 w-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Pro-quality indoor pickleball courts</h3>
-                  <p className="text-gray-600">Professional facility in Toronto with optimal playing conditions</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Pro-quality indoor courts</h3>
+                  <p className="text-gray-600">Professional facility with optimal playing conditions</p>
                 </CardContent>
               </Card>
               <Card className="bg-white border-gray-200 text-center">
                 <CardContent className="p-6">
                   <Users className="h-12 w-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    Small groups for more pickleball training
-                  </h3>
-                  <p className="text-gray-600">Maximum 16 intermediate players for personalized attention</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Small groups for more reps</h3>
+                  <p className="text-gray-600">Maximum 16 players for personalized attention</p>
                 </CardContent>
               </Card>
               <Card className="bg-white border-gray-200 text-center">
                 <CardContent className="p-6">
                   <Target className="h-12 w-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    Strategy + skills for intermediate 3.0–3.5 players
-                  </h3>
-                  <p className="text-gray-600">Tailored pickleball lessons for 3.0-3.5 rated players</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Strategy + skills for intermediates</h3>
+                  <p className="text-gray-600">Tailored training for 3.0-3.5 rated players</p>
                 </CardContent>
               </Card>
             </div>
@@ -437,7 +454,7 @@ export default function TwoDayJan2026Page() {
               <CardContent className="p-0">
                 <img
                   src="/hero-action.jpg"
-                  alt="Wide on-court rally shot inside professional indoor pickleball facility in Toronto"
+                  alt="Wide on-court rally shot inside professional pickleball facility in Toronto"
                   className="w-full h-64 object-cover rounded-lg"
                 />
               </CardContent>
@@ -453,6 +470,14 @@ export default function TwoDayJan2026Page() {
                 <AccordionTrigger className="text-left text-gray-900">Who is this for?</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
                   Intermediate players rated 3.0–3.5 looking to level up with pro coaching.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="cost" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left text-gray-900">How much is it?</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  The camp fee is $800 CAD + HST. That works out to $904 total per player for the full 2-day camp,
+                  including professional coaching, snacks & drinks, swag, and court time.
                 </AccordionContent>
               </AccordionItem>
 
@@ -553,11 +578,7 @@ export default function TwoDayJan2026Page() {
           <div className="container mx-auto text-center">
             <div className="space-y-0">
               <div className="flex justify-center">
-                <img
-                  src="/breakaway-logo-horizontal.png"
-                  alt="Breakaway Pickleball Camps - Toronto pickleball training"
-                  className="h-40 w-auto"
-                />
+                <img src="/breakaway-logo-horizontal.png" alt="Breakaway Pickleball Camps" className="h-40 w-auto" />
               </div>
               <p className="text-gray-600 mt-4">Find Your Next Level.</p>
               <p className="text-sm text-gray-500 mt-2">
