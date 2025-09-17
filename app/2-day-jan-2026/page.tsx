@@ -10,9 +10,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CheckCircle, Calendar, MapPin, Users, Target, Zap } from "lucide-react"
-import { Countdown } from "@/components/Countdown"
 import { ActionRow } from "@/components/ActionRow"
 import { LAUNCH_CONFIG } from "@/lib/launch"
+import dynamic from "next/dynamic"
+
+const CountdownWidget = dynamic(() => import("@/app/components/CountdownWidget"), { ssr: false })
 
 export default function TwoDayJan2026Page() {
   const [isWaitlist, setIsWaitlist] = useState(false)
@@ -92,6 +94,8 @@ export default function TwoDayJan2026Page() {
 
   return (
     <div className="min-h-screen bg-white">
+      <CountdownWidget />
+
       <header className="sticky top-0 z-50 bg-white backdrop-blur supports-[backdrop-filter]:bg-white/95 border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-1">
@@ -166,8 +170,33 @@ export default function TwoDayJan2026Page() {
                     <div className="space-y-6">
                       <div className="space-y-4">
                         <h3 className="text-2xl font-bold text-primary">Registration opens in</h3>
-                        <Countdown target={LAUNCH_CONFIG.launchAt} onOpen={handleRegistrationOpen} />
-                        <p className="text-gray-600">
+                        <div id="cd-wrapper" className="grid grid-cols-4 gap-4 text-center">
+                          <div className="bg-gray-50 rounded-lg p-4">
+                            <div id="cd-days" className="text-3xl font-bold text-primary">
+                              --
+                            </div>
+                            <div className="text-sm text-gray-600 uppercase tracking-wide">DAYS</div>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-4">
+                            <div id="cd-hours" className="text-3xl font-bold text-primary">
+                              --
+                            </div>
+                            <div className="text-sm text-gray-600 uppercase tracking-wide">HOURS</div>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-4">
+                            <div id="cd-minutes" className="text-3xl font-bold text-primary">
+                              --
+                            </div>
+                            <div className="text-sm text-gray-600 uppercase tracking-wide">MINUTES</div>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-4">
+                            <div id="cd-seconds" className="text-3xl font-bold text-primary">
+                              --
+                            </div>
+                            <div className="text-sm text-gray-600 uppercase tracking-wide">SECONDS</div>
+                          </div>
+                        </div>
+                        <p id="cd-open-label" className="text-gray-600">
                           Opens at {LAUNCH_CONFIG.localTime} on {LAUNCH_CONFIG.formattedDate}
                         </p>
                         <ActionRow />
