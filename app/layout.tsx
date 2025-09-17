@@ -14,6 +14,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://breakawaycamps.ca"),
   title: "Toronto Intermediate Pickleball Camp — Jan 9–10, 2026 (3.0–3.5)",
   description:
     "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $900 CAD. Snacks & drinks included.",
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     title: "Toronto Intermediate Pickleball Camp — Jan 9–10, 2026",
     description:
       "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $800 CAD. Snacks & drinks included.",
+    url: "/2-day-jan-2026",
     images: [
       {
         url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-09-07%20at%2010.08.32%E2%80%AFAM-cklXpkJgRVAtZWxMmHVwUNPN6QBUyS.png",

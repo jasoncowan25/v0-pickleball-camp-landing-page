@@ -9,10 +9,10 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { CheckCircle, Calendar, MapPin, Users, Target, Zap } from "lucide-react"
-import { ActionRow } from "@/components/ActionRow"
+import { CheckCircle, Calendar, MapPin, Users, Target, Zap, Grid3X3 } from "lucide-react"
 import { LAUNCH_CONFIG } from "@/lib/launch"
 import dynamic from "next/dynamic"
+import CountdownActions from "@/components/CountdownActions"
 
 const CountdownWidget = dynamic(() => import("@/app/components/CountdownWidget"), { ssr: false })
 
@@ -68,7 +68,7 @@ export default function TwoDayJan2026Page() {
     setEmailStatus("")
 
     try {
-      const response = await fetch("https://hooks.zapier.com/hooks/catch/22788039/ud0sqv4/", {
+      const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,8 +78,10 @@ export default function TwoDayJan2026Page() {
         }),
       })
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok")
+      const data = await response.json()
+
+      if (!response.ok || !data?.ok) {
+        throw new Error(data?.error || "Failed")
       }
 
       // Success
@@ -153,6 +155,10 @@ export default function TwoDayJan2026Page() {
                   <span className="text-gray-700">Small group, only 16 spots</span>
                 </div>
                 <div className="flex items-center gap-3">
+                  <Grid3X3 className="h-5 w-5 text-accent" />
+                  <span className="text-gray-700">4 courts, everyone on-court the whole time</span>
+                </div>
+                <div className="flex items-center gap-3">
                   <Zap className="h-5 w-5 text-accent" />
                   <span className="text-gray-700">Snacks & drinks included</span>
                 </div>
@@ -199,48 +205,7 @@ export default function TwoDayJan2026Page() {
                         <p id="cd-open-label" className="text-gray-600">
                           Opens at {LAUNCH_CONFIG.localTime} on {LAUNCH_CONFIG.formattedDate}
                         </p>
-                        <ActionRow />
-                        <hr className="border-t mt-4 mb-3" />
-                        <div id="waitlist-area" className="space-y-2">
-                          <div className="flex flex-col md:flex-row md:items-center gap-2">
-                            <label htmlFor="email" className="sr-only">
-                              Email address
-                            </label>
-                            <input
-                              type="email"
-                              id="email"
-                              value={emailInput}
-                              onChange={(e) => setEmailInput(e.target.value)}
-                              inputMode="email"
-                              autoComplete="email"
-                              placeholder="you@example.com"
-                              required
-                              className="w-full md:max-w-[420px] rounded-lg border px-3 py-2"
-                              aria-describedby="email-help"
-                            />
-                            <button
-                              type="button"
-                              onClick={handleEmailSubmit}
-                              disabled={isSubmitting}
-                              className="rounded-xl px-4 py-2 font-medium text-white bg-primary hover:bg-blue-700 disabled:opacity-70"
-                            >
-                              {isSubmitting ? "Adding..." : "Notify me"}
-                            </button>
-                          </div>
-                          <p id="email-help" className="text-sm text-gray-600">
-                            We'll email you the moment registration opens.{" "}
-                            <a href="/privacy" className="underline">
-                              Privacy
-                            </a>
-                          </p>
-                          {emailStatus && (
-                            <p
-                              className={`text-sm ${emailStatus.includes("Thanks") ? "text-green-700" : "text-red-600"}`}
-                            >
-                              {emailStatus}
-                            </p>
-                          )}
-                        </div>
+                        <CountdownActions />
                       </div>
                     </div>
                   </Card>
@@ -332,7 +297,7 @@ export default function TwoDayJan2026Page() {
                 alt="Joey coaching at a professional indoor pickleball facility"
                 className="rounded-2xl shadow-lg w-full h-auto"
               />
-              <p className="text-center text-gray-600">Joey teaching at a pro facility in Toronto</p>
+              <p className="text-center text-gray-600">Coach Joey at a pro facility in Toronto</p>
             </div>
           </div>
         </div>
@@ -548,8 +513,8 @@ export default function TwoDayJan2026Page() {
 
           <p className="mt-6 text-gray-600">
             Questions? Email{" "}
-            <a href="mailto:info@yourdomain.com" className="text-primary hover:text-accent hover:underline">
-              info@yourdomain.com
+            <a href="mailto:breakawaypickleball@gmail.com" className="text-primary hover:text-accent hover:underline">
+              breakawaypickleball@gmail.com
             </a>
           </p>
         </div>
