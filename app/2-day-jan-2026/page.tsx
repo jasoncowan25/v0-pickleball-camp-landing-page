@@ -376,7 +376,7 @@ export default function TwoDayJan2026Page() {
                     />
                   </div>
                   <div className="md:col-span-2 space-y-4">
-                    <h2 className="text-3xl font-bold text-primary">Experienced Coach: Joey Manchurek</h2>
+                    <h2 className="text-3xl font-bold text-primary">Joey Manchurek - Experienced Pickleball Coach</h2>
                     <div className="space-y-3 text-gray-600">
                       <p>Former pro hockey player (OHL Oshawa Generals Captain; later ECHL).</p>
                       <p>Grew up playing tennis & table tennis; transitioned quickly to competitive pickleball.</p>
