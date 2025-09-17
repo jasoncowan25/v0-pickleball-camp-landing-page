@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Head from "next/head"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -95,453 +96,488 @@ export default function TwoDayJan2026Page() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <CountdownWidget />
+    <>
+      <Head>
+        <title>Toronto Pickleball Camp – 2-Day Intermediate Clinic (Jan 2026)</title>
+        <meta
+          name="description"
+          content="Join our 2-day pickleball camp in Toronto this January 2026! Perfect for intermediate 3.0–3.5 players, with an experienced coach, indoor courts, and limited spots for personalized training."
+        />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.breakawaycamps.ca/2-day-jan-2026" />
+      </Head>
 
-      <header className="sticky top-0 z-50 bg-white backdrop-blur supports-[backdrop-filter]:bg-white/95 border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <img src="/breakaway-logo.png" alt="Breakaway Pickleball Camps" className="h-10 w-auto" />
-            <div className="brand-text text-xl text-primary">Breakaway Pickleball Camps</div>
-          </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#program" className="text-primary hover:text-accent transition-colors">
-              Program
-            </a>
-            <a href="#schedule" className="text-primary hover:text-accent transition-colors">
-              Schedule
-            </a>
-            <a href="#coach" className="text-primary hover:text-accent transition-colors">
-              Coach
-            </a>
-            <a href="#pricing" className="text-primary hover:text-accent transition-colors">
-              Pricing
-            </a>
-            <a href="#faq" className="text-primary hover:text-accent transition-colors">
-              FAQ
-            </a>
-            {isRegistrationOpen ? (
-              <Button asChild className="bg-primary hover:bg-blue-700 text-white">
-                <a href="#register">Reserve Your Spot</a>
-              </Button>
-            ) : (
-              <Button onClick={scrollToCountdown} className="bg-primary hover:bg-blue-700 text-white">
-                Countdown to Register
-              </Button>
-            )}
-          </nav>
-        </div>
-      </header>
+      <div className="min-h-screen bg-white">
+        <CountdownWidget />
 
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <Badge className="bg-accent text-accent-foreground">Only 16 spots</Badge>
-                <h1 className="text-5xl lg:text-6xl font-bold text-primary text-balance">
-                  16 Players. 2 Days. Big Results.
-                </h1>
-                <p className="text-xl text-gray-600">Intermediate Camp (3.0–3.5) • Toronto • Jan 9–10, 2026</p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent" />
-                  <span className="text-gray-700">Pro-led training at a professional facility</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Users className="h-5 w-5 text-accent" />
-                  <span className="text-gray-700">Small group, only 16 spots</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Grid3X3 className="h-5 w-5 text-accent" />
-                  <span className="text-gray-700">4 courts, everyone on-court the whole time</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Zap className="h-5 w-5 text-accent" />
-                  <span className="text-gray-700">Snacks & drinks included</span>
-                </div>
-              </div>
-
+        <header className="sticky top-0 z-50 bg-white backdrop-blur supports-[backdrop-filter]:bg-white/95 border-b border-gray-200">
+          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-1">
+              <img src="/breakaway-logo.png" alt="Breakaway Pickleball Camps" className="h-10 w-auto" />
+              <div className="brand-text text-xl text-primary">Breakaway Pickleball Camps</div>
+            </div>
+            <nav className="hidden md:flex items-center gap-6">
+              <a href="#program" className="text-primary hover:text-accent transition-colors">
+                Program
+              </a>
+              <a href="#schedule" className="text-primary hover:text-accent transition-colors">
+                Schedule
+              </a>
+              <a href="#coach" className="text-primary hover:text-accent transition-colors">
+                Coach
+              </a>
+              <a href="#pricing" className="text-primary hover:text-accent transition-colors">
+                Pricing
+              </a>
+              <a href="#faq" className="text-primary hover:text-accent transition-colors">
+                FAQ
+              </a>
               {isRegistrationOpen ? (
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-blue-700 text-white text-lg px-8">
-                    Reserve Your Spot — $800 CAD
-                  </Button>
-                </div>
+                <Button asChild className="bg-primary hover:bg-blue-700 text-white">
+                  <a href="#register">Reserve Your Spot</a>
+                </Button>
               ) : (
-                <div className="space-y-4" id="countdown-section">
-                  <Card className="bg-white border-gray-200 p-6">
-                    <div className="space-y-6">
-                      <div className="space-y-4">
-                        <h3 className="text-2xl font-bold text-primary">Registration opens in</h3>
-                        <div id="cd-wrapper" className="grid grid-cols-4 gap-4 text-center">
-                          <div className="bg-gray-50 rounded-lg p-4">
-                            <div id="cd-days" className="text-3xl font-bold text-primary">
-                              --
-                            </div>
-                            <div className="text-sm text-gray-600 uppercase tracking-wide">DAYS</div>
-                          </div>
-                          <div className="bg-gray-50 rounded-lg p-4">
-                            <div id="cd-hours" className="text-3xl font-bold text-primary">
-                              --
-                            </div>
-                            <div className="text-sm text-gray-600 uppercase tracking-wide">HOURS</div>
-                          </div>
-                          <div className="bg-gray-50 rounded-lg p-4">
-                            <div id="cd-minutes" className="text-3xl font-bold text-primary">
-                              --
-                            </div>
-                            <div className="text-sm text-gray-600 uppercase tracking-wide">MINUTES</div>
-                          </div>
-                          <div className="bg-gray-50 rounded-lg p-4">
-                            <div id="cd-seconds" className="text-3xl font-bold text-primary">
-                              --
-                            </div>
-                            <div className="text-sm text-gray-600 uppercase tracking-wide">SECONDS</div>
-                          </div>
-                        </div>
-                        <p id="cd-open-label" className="text-gray-600">
-                          Opens at {LAUNCH_CONFIG.localTime} on {LAUNCH_CONFIG.formattedDate}
-                        </p>
-                        <CountdownActions />
-                      </div>
-                    </div>
-                  </Card>
-                </div>
+                <Button onClick={scrollToCountdown} className="bg-primary hover:bg-blue-700 text-white">
+                  Countdown to Register
+                </Button>
               )}
-            </div>
+            </nav>
+          </div>
+        </header>
 
-            <div className="relative">
-              <img
-                src="/hero-action.jpg"
-                alt="Pickleball player in action reaching for a low ball with spectators behind fence"
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
+        <section className="py-20 px-4 bg-white">
+          <div className="container mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <Badge className="bg-accent text-accent-foreground">Only 16 spots</Badge>
+                  <h1 className="text-5xl lg:text-6xl font-bold text-primary text-balance">
+                    Toronto 2-Day Pickleball Camp for Intermediate Players (January 2026)
+                  </h1>
+                  <p className="text-xl text-gray-600">
+                    Intermediate 3.0–3.5 players • Indoor pickleball courts • Jan 9–10, 2026
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent" />
+                    <span className="text-gray-700">
+                      Pro-led pickleball training at a professional facility in Toronto
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Users className="h-5 w-5 text-accent" />
+                    <span className="text-gray-700">Small group pickleball clinic, only 16 spots</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Grid3X3 className="h-5 w-5 text-accent" />
+                    <span className="text-gray-700">4 indoor pickleball courts, everyone on-court the whole time</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Zap className="h-5 w-5 text-accent" />
+                    <span className="text-gray-700">Snacks & drinks included</span>
+                  </div>
+                </div>
+
+                {isRegistrationOpen ? (
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button size="lg" className="bg-primary hover:bg-blue-700 text-white text-lg px-8">
+                      Reserve Your Spot — $800 CAD
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-4" id="countdown-section">
+                    <Card className="bg-white border-gray-200 p-6">
+                      <div className="space-y-6">
+                        <div className="space-y-4">
+                          <h3 className="text-2xl font-bold text-primary">Registration opens in</h3>
+                          <div id="cd-wrapper" className="grid grid-cols-4 gap-4 text-center">
+                            <div className="bg-gray-50 rounded-lg p-4">
+                              <div id="cd-days" className="text-3xl font-bold text-primary">
+                                --
+                              </div>
+                              <div className="text-sm text-gray-600 uppercase tracking-wide">DAYS</div>
+                            </div>
+                            <div className="bg-gray-50 rounded-lg p-4">
+                              <div id="cd-hours" className="text-3xl font-bold text-primary">
+                                --
+                              </div>
+                              <div className="text-sm text-gray-600 uppercase tracking-wide">HOURS</div>
+                            </div>
+                            <div className="bg-gray-50 rounded-lg p-4">
+                              <div id="cd-minutes" className="text-3xl font-bold text-primary">
+                                --
+                              </div>
+                              <div className="text-sm text-gray-600 uppercase tracking-wide">MINUTES</div>
+                            </div>
+                            <div className="bg-gray-50 rounded-lg p-4">
+                              <div id="cd-seconds" className="text-3xl font-bold text-primary">
+                                --
+                              </div>
+                              <div className="text-sm text-gray-600 uppercase tracking-wide">SECONDS</div>
+                            </div>
+                          </div>
+                          <p id="cd-open-label" className="text-gray-600">
+                            Opens at {LAUNCH_CONFIG.localTime} on {LAUNCH_CONFIG.formattedDate}
+                          </p>
+                          <CountdownActions />
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                )}
+              </div>
+
+              <div className="relative">
+                <img
+                  src="/hero-action.jpg"
+                  alt="Players practicing doubles at an indoor pickleball camp in Toronto"
+                  className="rounded-2xl shadow-2xl w-full h-auto"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="program" className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-8">
-              <h2 className="text-4xl font-bold text-primary">Camp Focus</h2>
-              <div className="grid gap-4">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Net Game & Dinking</h3>
-                    <p className="text-gray-600">Dominate the net and move the ball effectively.</p>
+        <section id="program" className="py-20 px-4 bg-gray-50">
+          <div className="container mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div className="space-y-8">
+                <h2 className="text-4xl font-bold text-primary">Improve Your Game at our Toronto Pickleball Clinic</h2>
+                <div className="grid gap-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Net Game & Dinking</h3>
+                      <p className="text-gray-600">Dominate the net and move the ball effectively.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">3rd Shots & Transition Zone</h3>
-                    <p className="text-gray-600">
-                      Master drop shots, drives, and seamless transitions from baseline to net.
-                    </p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">3rd Shots & Transition Zone</h3>
+                      <p className="text-gray-600">
+                        Master drop shots, drives, and seamless transitions from baseline to net.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Defensive Strategies</h3>
-                    <p className="text-gray-600">Slow down hard hitters and manage powerful shots.</p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Defensive Strategies</h3>
+                      <p className="text-gray-600">Slow down hard hitters and manage powerful shots.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Attacking at the Net</h3>
-                    <p className="text-gray-600">Refine volleying and finishing techniques.</p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Attacking at the Net</h3>
+                      <p className="text-gray-600">Refine volleying and finishing techniques.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Baseline Play</h3>
-                    <p className="text-gray-600">Enhance consistency and shot selection.</p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Baseline Play</h3>
+                      <p className="text-gray-600">Enhance consistency and shot selection.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Serve & Return</h3>
-                    <p className="text-gray-600">Use these as weapons to control the game.</p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Serve & Return</h3>
+                      <p className="text-gray-600">Use these as weapons to control the game.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Lobs</h3>
-                    <p className="text-gray-600">Know when to lob and how to defend against them.</p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Lobs</h3>
+                      <p className="text-gray-600">Know when to lob and how to defend against them.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Court Positioning</h3>
-                    <p className="text-gray-600">Leverage smart positioning to gain a point-by-point advantage.</p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Court Positioning</h3>
+                      <p className="text-gray-600">Leverage smart positioning to gain a point-by-point advantage.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="space-y-4">
-              <img
-                src="/joey-coaching.jpg"
-                alt="Joey coaching at a professional indoor pickleball facility"
-                className="rounded-2xl shadow-lg w-full h-auto"
-              />
-              <p className="text-center text-gray-600">Coach Joey at a pro facility in Toronto</p>
+              <div className="space-y-4">
+                <img
+                  src="/joey-coaching.jpg"
+                  alt="Coach demonstrating pickleball drills to intermediate 3.0–3.5 players"
+                  className="rounded-2xl shadow-lg w-full h-auto"
+                />
+                <p className="text-center text-gray-600">
+                  Experienced pickleball coach Joey at a pro facility in Toronto
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="schedule" className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-2xl">
-          <Card className="bg-white border-gray-200">
-            <CardHeader className="text-center">
-              <div className="flex justify-center mb-4">
-                <Calendar className="h-12 w-12 text-accent" />
-              </div>
-              <CardTitle className="text-3xl text-primary">2 Full Training Days</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-center">
-              <div className="text-xl font-semibold text-gray-900">Day 1 & Day 2 — 8:00 AM – 4:00 PM</div>
-              <p className="text-gray-600">On-court training with a 1-hour lunch break.</p>
-              <p className="text-sm text-gray-500">Note: Confirm specifics with Camp Director after registration.</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section id="coach" className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-4xl">
-          <Card className="bg-white border-gray-200">
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-3 gap-8 items-center">
-                <div className="flex justify-center">
-                  <img
-                    src="/coach-joey.jpg"
-                    alt="Joey Manchurek holding trophy and paddle at tournament"
-                    className="w-48 h-48 rounded-full object-cover shadow-lg"
-                  />
+        <section id="schedule" className="py-20 px-4 bg-white">
+          <div className="container mx-auto max-w-2xl">
+            <Card className="bg-white border-gray-200">
+              <CardHeader className="text-center">
+                <div className="flex justify-center mb-4">
+                  <Calendar className="h-12 w-12 text-accent" />
                 </div>
-                <div className="md:col-span-2 space-y-4">
-                  <h2 className="text-3xl font-bold text-primary">Joey Manchurek</h2>
-                  <div className="space-y-3 text-gray-600">
-                    <p>Former pro hockey player (OHL Oshawa Generals Captain; later ECHL).</p>
-                    <p>Grew up playing tennis & table tennis; transitioned quickly to competitive pickleball.</p>
-                    <p>
-                      Actively competes in tournaments; coaching focus on leadership, skill development, and helping
-                      players reach potential.
-                    </p>
+                <CardTitle className="text-3xl text-primary">Indoor Winter Pickleball Training in Toronto</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 text-center">
+                <div className="text-xl font-semibold text-gray-900">Day 1 & Day 2 — 8:00 AM – 4:00 PM</div>
+                <p className="text-gray-600">On-court pickleball lessons with a 1-hour lunch break.</p>
+                <p className="text-sm text-gray-500">Note: Confirm specifics with Camp Director after registration.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section id="coach" className="py-20 px-4 bg-gray-50">
+          <div className="container mx-auto max-w-4xl">
+            <Card className="bg-white border-gray-200">
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-3 gap-8 items-center">
+                  <div className="flex justify-center">
+                    <img
+                      src="/coach-joey.jpg"
+                      alt="Joey Manchurek, experienced pickleball coach holding trophy and paddle at tournament"
+                      className="w-48 h-48 rounded-full object-cover shadow-lg"
+                    />
                   </div>
-                  <blockquote className="text-xl font-semibold text-gray-900 border-l-4 border-accent pl-4">
-                    "My goal is to give you the tools and confidence to win more matches."
-                  </blockquote>
+                  <div className="md:col-span-2 space-y-4">
+                    <h2 className="text-3xl font-bold text-primary">Joey Manchurek - Experienced Pickleball Coach</h2>
+                    <div className="space-y-3 text-gray-600">
+                      <p>Former pro hockey player (OHL Oshawa Generals Captain; later ECHL).</p>
+                      <p>
+                        Grew up playing tennis & table tennis; transitioned quickly to competitive pickleball in the
+                        GTA.
+                      </p>
+                      <p>
+                        Actively competes in Ontario pickleball tournaments; coaching focus on leadership, skill
+                        development, and helping intermediate players reach their potential.
+                      </p>
+                    </div>
+                    <blockquote className="text-xl font-semibold text-gray-900 border-l-4 border-accent pl-4">
+                      "My goal is to give you the tools and confidence to win more matches."
+                    </blockquote>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
 
-      <section id="pricing" className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-2xl">
-          <Card className="bg-white border-2 border-accent">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl text-primary">Camp Investment</CardTitle>
-              <CardDescription className="text-lg text-gray-600">
-                $800 CAD — 2 days, pro instruction, snacks and drinks included.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6 text-center">
-              <Badge className="bg-accent text-accent-foreground text-lg px-4 py-2">Only 16 spots</Badge>
+        <section id="pricing" className="py-20 px-4 bg-white">
+          <div className="container mx-auto max-w-2xl">
+            <Card className="bg-white border-2 border-accent">
+              <CardHeader className="text-center">
+                <CardTitle className="text-3xl text-primary">Why Choose Our Pickleball Camp in Canada</CardTitle>
+                <CardDescription className="text-lg text-gray-600">
+                  $800 CAD — 2 days of intensive pickleball training, pro instruction, snacks and drinks included.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6 text-center">
+                <Badge className="bg-accent text-accent-foreground text-lg px-4 py-2">Only 16 spots</Badge>
+                <Button
+                  size="lg"
+                  className="w-full bg-primary hover:bg-blue-700 text-white text-xl py-6"
+                  onClick={handleReservation}
+                  disabled={!isRegistrationOpen}
+                >
+                  {isRegistrationOpen
+                    ? isWaitlist
+                      ? "Join Waitlist"
+                      : "Reserve Your Spot"
+                    : "Registration Opens Soon"}
+                </Button>
+                <p className="text-sm text-gray-500">Secure checkout. No hidden fees.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section className="py-20 px-4 bg-gray-50">
+          <div className="container mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <Card className="bg-white border-gray-200 text-center">
+                <CardContent className="p-6">
+                  <MapPin className="h-12 w-12 text-accent mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Pro-quality indoor pickleball courts</h3>
+                  <p className="text-gray-600">Professional facility in Toronto with optimal playing conditions</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white border-gray-200 text-center">
+                <CardContent className="p-6">
+                  <Users className="h-12 w-12 text-accent mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    Small groups for more pickleball training
+                  </h3>
+                  <p className="text-gray-600">Maximum 16 intermediate players for personalized attention</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white border-gray-200 text-center">
+                <CardContent className="p-6">
+                  <Target className="h-12 w-12 text-accent mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    Strategy + skills for intermediate 3.0–3.5 players
+                  </h3>
+                  <p className="text-gray-600">Tailored pickleball lessons for 3.0-3.5 rated players</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="bg-white border-gray-200">
+              <CardContent className="p-0">
+                <img
+                  src="/hero-action.jpg"
+                  alt="Wide on-court rally shot inside professional indoor pickleball facility in Toronto"
+                  className="w-full h-64 object-cover rounded-lg"
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section id="faq" className="py-20 px-4 bg-white">
+          <div className="container mx-auto max-w-3xl">
+            <h2 className="text-4xl font-bold text-center text-primary mb-12">Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="who" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left text-gray-900">Who is this for?</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  Intermediate players rated 3.0–3.5 looking to level up with pro coaching.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="included" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left text-gray-900">What's included?</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  2 full days of on-court training, snacks, and drinks.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="location" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left text-gray-900">Where is it?</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  Professional indoor facility in Toronto (exact address provided after registration).
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="bring" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left text-gray-900">What should I bring?</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  Paddle, court shoes, water bottle. We'll handle snacks & drinks.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="waitlist" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left text-gray-900">Is there a waitlist?</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  If sold out, we'll show a waitlist form instead of the payment button.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
+
+        <section id="register" className="py-20 px-4 bg-gray-50">
+          <div className="container mx-auto max-w-2xl text-center">
+            <h2 className="text-4xl font-bold text-primary mb-8">Ready to Level Up?</h2>
+
+            {isWaitlist ? (
+              <Card className="bg-white border-gray-200">
+                <CardContent className="p-8 space-y-6">
+                  <h3 className="text-2xl font-semibold text-gray-900">Join the Waitlist</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="name" className="text-gray-900">
+                        Name
+                      </Label>
+                      <Input
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="bg-white border-gray-200"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email" className="text-gray-900">
+                        Email
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="bg-white border-gray-200"
+                      />
+                    </div>
+                    <Button
+                      onClick={handleReservation}
+                      className="w-full bg-primary hover:bg-blue-700 text-white"
+                      size="lg"
+                    >
+                      Join Waitlist
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ) : (
               <Button
                 size="lg"
-                className="w-full bg-primary hover:bg-blue-700 text-white text-xl py-6"
+                className="bg-primary hover:bg-blue-700 text-white text-xl px-12 py-6"
                 onClick={handleReservation}
                 disabled={!isRegistrationOpen}
               >
-                {isRegistrationOpen ? (isWaitlist ? "Join Waitlist" : "Reserve Your Spot") : "Registration Opens Soon"}
+                {isRegistrationOpen ? "Reserve Your Spot — $800 CAD" : "Registration Opens Soon"}
               </Button>
-              <p className="text-sm text-gray-500">Secure checkout. No hidden fees.</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+            )}
 
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-white border-gray-200 text-center">
-              <CardContent className="p-6">
-                <MapPin className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Pro-quality indoor courts</h3>
-                <p className="text-gray-600">Professional facility with optimal playing conditions</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white border-gray-200 text-center">
-              <CardContent className="p-6">
-                <Users className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Small groups for more reps</h3>
-                <p className="text-gray-600">Maximum 16 players for personalized attention</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white border-gray-200 text-center">
-              <CardContent className="p-6">
-                <Target className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Strategy + skills for intermediates</h3>
-                <p className="text-gray-600">Tailored training for 3.0-3.5 rated players</p>
-              </CardContent>
-            </Card>
+            <p className="mt-6 text-gray-600">
+              Questions? Email{" "}
+              <a href="mailto:breakawaypickleball@gmail.com" className="text-primary hover:text-accent hover:underline">
+                breakawaypickleball@gmail.com
+              </a>
+            </p>
           </div>
+        </section>
 
-          <Card className="bg-white border-gray-200">
-            <CardContent className="p-0">
-              <img
-                src="/hero-action.jpg"
-                alt="Wide on-court rally shot inside professional facility"
-                className="w-full h-64 object-cover rounded-lg"
-              />
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section id="faq" className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-4xl font-bold text-center text-primary mb-12">Frequently Asked Questions</h2>
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="who" className="bg-white border border-gray-200 rounded-lg px-6">
-              <AccordionTrigger className="text-left text-gray-900">Who is this for?</AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                Intermediate players rated 3.0–3.5 looking to level up with pro coaching.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="included" className="bg-white border border-gray-200 rounded-lg px-6">
-              <AccordionTrigger className="text-left text-gray-900">What's included?</AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                2 full days of on-court training, snacks, and drinks.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="location" className="bg-white border border-gray-200 rounded-lg px-6">
-              <AccordionTrigger className="text-left text-gray-900">Where is it?</AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                Professional indoor facility in Toronto (exact address provided after registration).
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="bring" className="bg-white border border-gray-200 rounded-lg px-6">
-              <AccordionTrigger className="text-left text-gray-900">What should I bring?</AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                Paddle, court shoes, water bottle. We'll handle snacks & drinks.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="waitlist" className="bg-white border border-gray-200 rounded-lg px-6">
-              <AccordionTrigger className="text-left text-gray-900">Is there a waitlist?</AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                If sold out, we'll show a waitlist form instead of the payment button.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </section>
-
-      <section id="register" className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-bold text-primary mb-8">Ready to Level Up?</h2>
-
-          {isWaitlist ? (
-            <Card className="bg-white border-gray-200">
-              <CardContent className="p-8 space-y-6">
-                <h3 className="text-2xl font-semibold text-gray-900">Join the Waitlist</h3>
-                <div className="space-y-4">
-                  <div>
-                    <Label htmlFor="name" className="text-gray-900">
-                      Name
-                    </Label>
-                    <Input
-                      id="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="bg-white border-gray-200"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="text-gray-900">
-                      Email
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="bg-white border-gray-200"
-                    />
-                  </div>
-                  <Button
-                    onClick={handleReservation}
-                    className="w-full bg-primary hover:bg-blue-700 text-white"
-                    size="lg"
-                  >
-                    Join Waitlist
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ) : (
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-blue-700 text-white text-xl px-12 py-6"
-              onClick={handleReservation}
-              disabled={!isRegistrationOpen}
-            >
-              {isRegistrationOpen ? "Reserve Your Spot — $800 CAD" : "Registration Opens Soon"}
-            </Button>
-          )}
-
-          <p className="mt-6 text-gray-600">
-            Questions? Email{" "}
-            <a href="mailto:breakawaypickleball@gmail.com" className="text-primary hover:text-accent hover:underline">
-              breakawaypickleball@gmail.com
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <footer className="py-12 px-4 bg-white border-t border-gray-200">
-        <div className="container mx-auto text-center">
-          <div className="space-y-0">
-            <div className="flex justify-center">
-              <img src="/breakaway-logo-horizontal.png" alt="Breakaway Pickleball Camps" className="h-40 w-auto" />
+        <footer className="py-12 px-4 bg-white border-t border-gray-200">
+          <div className="container mx-auto text-center">
+            <div className="space-y-0">
+              <div className="flex justify-center">
+                <img
+                  src="/breakaway-logo-horizontal.png"
+                  alt="Breakaway Pickleball Camps - Toronto pickleball training"
+                  className="h-40 w-auto"
+                />
+              </div>
+              <p className="text-gray-600 mt-4">Find Your Next Level.</p>
+              <p className="text-sm text-gray-500 mt-2">
+                All sales subject to terms. © 2026 Breakaway Pickleball Camps
+              </p>
             </div>
-            <p className="text-gray-600 mt-4">Find Your Next Level.</p>
-            <p className="text-sm text-gray-500 mt-2">All sales subject to terms. © 2026 Breakaway Pickleball Camps</p>
           </div>
-        </div>
-      </footer>
+        </footer>
 
-      <div className="fixed bottom-4 left-4 right-4 md:hidden z-50">
-        <Button
-          className="w-full bg-primary hover:bg-blue-700 text-white shadow-lg"
-          size="lg"
-          onClick={handleReservation}
-          disabled={!isRegistrationOpen}
-        >
-          {isRegistrationOpen ? "Reserve Your Spot — $800 CAD" : "Countdown to Register"}
-        </Button>
+        <div className="fixed bottom-4 left-4 right-4 md:hidden z-50">
+          <Button
+            className="w-full bg-primary hover:bg-blue-700 text-white shadow-lg"
+            size="lg"
+            onClick={handleReservation}
+            disabled={!isRegistrationOpen}
+          >
+            {isRegistrationOpen ? "Reserve Your Spot — $800 CAD" : "Countdown to Register"}
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
