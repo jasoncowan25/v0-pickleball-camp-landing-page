@@ -202,7 +202,7 @@ export default function TwoDayJan2026Page() {
                   </div>
                   <div className="flex items-center gap-3">
                     <Zap className="h-5 w-5 text-accent" />
-                    <span className="text-gray-700">Snacks & drinks included</span>
+                    <span className="text-gray-700">Lunch, snacks & drinks included</span>
                   </div>
                 </div>
 
@@ -401,7 +401,7 @@ export default function TwoDayJan2026Page() {
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl text-primary">Camp Investment</CardTitle>
                 <CardDescription className="text-lg text-gray-600">
-                  $800 CAD — 2 days, pro instruction, snacks and drinks included.
+                  $800 CAD — 2 days, pro instruction, lunch, snacks and drinks included.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6 text-center">
@@ -477,14 +477,14 @@ export default function TwoDayJan2026Page() {
                 <AccordionTrigger className="text-left text-gray-900">How much is it?</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
                   The camp fee is $800 CAD + HST. That works out to $904 total per player for the full 2-day camp,
-                  including professional coaching, snacks & drinks, swag, and court time.
+                  including professional coaching, lunch, snacks & drinks, swag, and court time.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="included" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left text-gray-900">What's included?</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
-                  2 full days of on-court training, snacks, and drinks.
+                  2 full days of on-court training, lunch, snacks, and drinks.
                 </AccordionContent>
               </AccordionItem>
 
@@ -498,7 +498,7 @@ export default function TwoDayJan2026Page() {
               <AccordionItem value="bring" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left text-gray-900">What should I bring?</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
-                  Paddle, court shoes, water bottle. We'll handle snacks & drinks.
+                  Paddle, court shoes, water bottle. We'll handle lunch, snacks & drinks.
                 </AccordionContent>
               </AccordionItem>
 
