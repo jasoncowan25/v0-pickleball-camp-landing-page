@@ -355,7 +355,7 @@ export default function TwoDayJan2026Page() {
                 <CardTitle className="text-3xl text-primary">2 Full Training Days</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-center">
-                <div className="text-xl font-semibold text-gray-900">Day 1 & Day 2 — 8:00 AM – 4:00 PM</div>
+                <div className="text-xl font-semibold text-gray-900">Day 1 & Day 2 — 9:00 AM – 5:00 PM</div>
                 <p className="text-gray-600">On-court training with a 1-hour lunch break.</p>
                 <p className="text-sm text-gray-500">Note: Confirm specifics with Camp Director after registration.</p>
               </CardContent>

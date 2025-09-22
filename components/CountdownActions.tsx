@@ -90,9 +90,10 @@ export default function CountdownActions() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="rounded-md px-4 py-2 font-medium text-white bg-blue-900"
+          className="rounded-md px-4 py-2 font-medium text-white bg-blue-900 whitespace-nowrap"
         >
-          {status === "loading" ? "Submitting..." : "Notify me"}
+          {status === "loading" ? "Submitting..." : <span className="hidden sm:inline">Notify me</span>}
+          {status === "loading" ? "" : <span className="sm:hidden">Notify</span>}
         </button>
       </form>
 
