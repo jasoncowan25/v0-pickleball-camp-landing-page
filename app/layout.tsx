@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   description:
     "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $800 CAD. Lunch, snacks & drinks included.",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title: "Toronto Intermediate Pickleball Camp — Jan 9–10, 2026",
     description:

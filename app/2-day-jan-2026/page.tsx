@@ -335,7 +335,7 @@ export default function TwoDayJan2026Page() {
 
               <div className="space-y-4">
                 <img
-                  src="/joey-coaching.jpg"
+                  src="/joey-coaching-v2.jpg"
                   alt="Coach demonstrating pickleball drills to intermediate 3.0–3.5 players"
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />
@@ -504,7 +504,7 @@ export default function TwoDayJan2026Page() {
 
               <AccordionItem value="waitlist" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left text-gray-900">Is there a waitlist?</AccordionTrigger>
-                <AccordionContent className="text-gray-600">
+                <AccordionContent className="text-gray-600 min-h-[60px] pb-4">
                   If sold out, we'll show a waitlist form instead of the payment button.
                 </AccordionContent>
               </AccordionItem>
