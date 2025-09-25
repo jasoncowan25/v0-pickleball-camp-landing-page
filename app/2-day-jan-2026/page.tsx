@@ -31,14 +31,12 @@ export default function TwoDayJan2026Page() {
   console.log("[v0] Is Date?", LAUNCH_CONFIG.launchAt instanceof Date)
 
   const handleReservation = () => {
-    // In a real app, this would check inventory and either proceed to checkout or show waitlist
     if (isWaitlist) {
       // Handle waitlist signup
       console.log("Waitlist signup:", { name, email })
       alert("Thanks! You've been added to the waitlist.")
     } else {
-      // Redirect to checkout
-      window.open("https://your-checkout-or-typeform.com", "_blank")
+      window.open("https://buy.stripe.com/test_6oUdR85YJbcc0G8cef57W00", "_blank", "noopener,noreferrer")
     }
   }
 
