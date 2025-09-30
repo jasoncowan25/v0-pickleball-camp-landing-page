@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://breakawaycamps.ca"),
   title: "Toronto Intermediate Pickleball Camp — Jan 9–10, 2026 (3.0–3.5)",
   description:
-    "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $800 CAD. Lunch, snacks & drinks included.",
+    "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $800 CAD (no tax). Lunch included, filtered water available.",
   generator: "v0.app",
   icons: {
     icon: "/favicon.ico",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Toronto Intermediate Pickleball Camp — Jan 9–10, 2026",
     description:
-      "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $800 CAD. Lunch, snacks & drinks included.",
+      "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $800 CAD (no tax). Lunch included, filtered water available.",
     url: "/2-day-jan-2026",
     images: [
       {

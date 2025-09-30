@@ -200,7 +200,7 @@ export default function TwoDayJan2026Page() {
                   </div>
                   <div className="flex items-center gap-3">
                     <Zap className="h-5 w-5 text-accent" />
-                    <span className="text-gray-700">Lunch, snacks & drinks included</span>
+                    <span className="text-gray-700">Catered lunch included</span>
                   </div>
                 </div>
 
@@ -380,8 +380,8 @@ export default function TwoDayJan2026Page() {
                       <p>Grew up playing tennis & table tennis; transitioned quickly to competitive pickleball.</p>
                       <p>
                         Actively competes in tournaments; coaching focus on leadership, skill development, and helping
-                        players reach potential.
-                      </p>
+                        players reach potential. 
+                      </p><p>Rating: 5.0 DUPR.</p>
                     </div>
                     <blockquote className="text-xl font-semibold text-gray-900 border-l-4 border-accent pl-4">
                       "My goal is to give you the tools and confidence to win more matches."
@@ -399,7 +399,7 @@ export default function TwoDayJan2026Page() {
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl text-primary">Camp Investment</CardTitle>
                 <CardDescription className="text-lg text-gray-600">
-                  $800 CAD — 2 days, pro instruction, lunch, snacks and drinks included.
+                  $800 CAD (no tax) — 2 days, pro instruction, lunch included.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6 text-center">
@@ -474,15 +474,15 @@ export default function TwoDayJan2026Page() {
               <AccordionItem value="cost" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left text-gray-900">How much is it?</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
-                  The camp fee is $800 CAD + HST. That works out to $904 total per player for the full 2-day camp,
-                  including professional coaching, lunch, snacks & drinks, swag, and court time.
+                  The camp fee is $800 CAD with no tax. That's $800 total per player for the full 2-day camp, including
+                  professional coaching, lunch, and court time. Filtered water is available throughout the day.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="included" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left text-gray-900">What's included?</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
-                  2 full days of on-court training, lunch, snacks, and drinks.
+                  2 full days of pro-led training, catered lunch, and unlimited filtered water.
                 </AccordionContent>
               </AccordionItem>
 
@@ -496,7 +496,7 @@ export default function TwoDayJan2026Page() {
               <AccordionItem value="bring" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left text-gray-900">What should I bring?</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
-                  Paddle, court shoes, water bottle. We'll handle lunch, snacks & drinks.
+                  Paddle, court shoes, water bottle. We'll provide lunch and filtered water is available.
                 </AccordionContent>
               </AccordionItem>
 
