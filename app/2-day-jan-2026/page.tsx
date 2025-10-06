@@ -258,7 +258,7 @@ export default function TwoDayJan2026Page() {
 
               <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-200">
                 <video
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/joey-breakaway-hero-uv5yOyM9Nvo8BWVl5lWtFspqmdyYn2.mp4"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/joey-teaching-hero-ZvNmepU9kwj2rV74MQn26CKbimDXsn.mp4"
                   autoPlay
                   muted
                   loop
