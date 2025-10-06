@@ -3,7 +3,7 @@
 import type React from "react"
 import Head from "next/head"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CheckCircle, Calendar, MapPin, Users, Target, Zap, Grid3X3 } from "lucide-react"
 import { LAUNCH_CONFIG } from "@/lib/launch"
+import { getOpenInfo } from "@/lib/openState"
 import dynamic from "next/dynamic"
 import CountdownActions from "@/components/CountdownActions"
 
@@ -21,22 +22,18 @@ export default function TwoDayJan2026Page() {
   const [isWaitlist, setIsWaitlist] = useState(false)
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
-  const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
   const [emailInput, setEmailInput] = useState("")
   const [emailStatus, setEmailStatus] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  console.log("[v0] LAUNCH_CONFIG:", LAUNCH_CONFIG)
-  console.log("[v0] LAUNCH_CONFIG.launchAt:", LAUNCH_CONFIG.launchAt)
-  console.log("[v0] Is Date?", LAUNCH_CONFIG.launchAt instanceof Date)
+  const { openAtIso, isOpen } = useMemo(() => getOpenInfo(), [])
 
   const handleReservation = () => {
     if (isWaitlist) {
-      // Handle waitlist signup
       console.log("Waitlist signup:", { name, email })
       alert("Thanks! You've been added to the waitlist.")
     } else {
-      window.open("https://buy.stripe.com/test_6oUdR85YJbcc0G8cef57W00", "_blank", "noopener,noreferrer")
+      window.open("https://buy.stripe.com/6oUdR85YJbcc0G8cef57W00", "_blank", "noopener,noreferrer")
     }
   }
 
@@ -55,16 +52,11 @@ export default function TwoDayJan2026Page() {
     }
   }
 
-  const handleRegistrationOpen = () => {
-    setIsRegistrationOpen(true)
-  }
-
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     const trimmedEmail = emailInput.trim().toLowerCase()
 
-    // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
     if (!emailRegex.test(trimmedEmail)) {
       setEmailStatus("Please enter a valid email address.")
@@ -91,7 +83,6 @@ export default function TwoDayJan2026Page() {
         throw new Error(data?.error || "Failed")
       }
 
-      // Success
       setEmailInput("")
       setEmailStatus("Thanks! We'll notify you when registration opens.")
     } catch (error) {
@@ -158,7 +149,7 @@ export default function TwoDayJan2026Page() {
               >
                 FAQ
               </a>
-              {isRegistrationOpen ? (
+              {isOpen ? (
                 <Button asChild className="bg-primary hover:bg-blue-700 text-white">
                   <a href="#register" onClick={(e) => handleSmoothScroll(e, "register")}>
                     Reserve Your Spot
@@ -204,10 +195,22 @@ export default function TwoDayJan2026Page() {
                   </div>
                 </div>
 
-                {isRegistrationOpen ? (
+                {isOpen ? (
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className="bg-primary hover:bg-blue-700 text-white text-lg px-8">
+                    <Button
+                      size="lg"
+                      onClick={handleReservation}
+                      className="bg-primary hover:bg-blue-700 text-white text-lg px-8"
+                    >
                       Reserve Your Spot — $800 CAD
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      asChild
+                      className="text-lg px-8 border-2 border-primary text-primary hover:bg-primary hover:text-white bg-transparent"
+                    >
+                      <a href="#program">See the Program</a>
                     </Button>
                   </div>
                 ) : (
@@ -253,12 +256,20 @@ export default function TwoDayJan2026Page() {
                 )}
               </div>
 
-              <div className="relative">
-                <img
-                  src="/hero-action.jpg"
-                  alt="Players practicing doubles at an indoor pickleball camp in Toronto"
-                  className="rounded-2xl shadow-2xl w-full h-auto"
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-200">
+                <video
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/joey-breakaway-hero-uv5yOyM9Nvo8BWVl5lWtFspqmdyYn2.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  className="w-full h-auto object-cover"
+                  poster="/images/joey-video-poster.jpg"
                 />
+                <div className="absolute bottom-2 left-2 bg-gray-900/50 text-white text-xs px-2 py-1 rounded">
+                  Coach Joey leading a training session.
+                </div>
               </div>
             </div>
           </div>
@@ -380,8 +391,9 @@ export default function TwoDayJan2026Page() {
                       <p>Grew up playing tennis & table tennis; transitioned quickly to competitive pickleball.</p>
                       <p>
                         Actively competes in tournaments; coaching focus on leadership, skill development, and helping
-                        players reach potential. 
-                      </p><p>Rating: 5.0 DUPR.</p>
+                        players reach potential.
+                      </p>
+                      <p>Rating: 5.0 DUPR.</p>
                     </div>
                     <blockquote className="text-xl font-semibold text-gray-900 border-l-4 border-accent pl-4">
                       "My goal is to give you the tools and confidence to win more matches."
@@ -408,13 +420,9 @@ export default function TwoDayJan2026Page() {
                   size="lg"
                   className="w-full bg-primary hover:bg-blue-700 text-white text-xl py-6"
                   onClick={handleReservation}
-                  disabled={!isRegistrationOpen}
+                  disabled={!isOpen}
                 >
-                  {isRegistrationOpen
-                    ? isWaitlist
-                      ? "Join Waitlist"
-                      : "Reserve Your Spot"
-                    : "Registration Opens Soon"}
+                  {isOpen ? (isWaitlist ? "Join Waitlist" : "Reserve Your Spot") : "Registration Opens Soon"}
                 </Button>
                 <p className="text-sm text-gray-500">Secure checkout. No hidden fees.</p>
               </CardContent>
@@ -557,9 +565,9 @@ export default function TwoDayJan2026Page() {
                 size="lg"
                 className="bg-primary hover:bg-blue-700 text-white text-xl px-12 py-6"
                 onClick={handleReservation}
-                disabled={!isRegistrationOpen}
+                disabled={!isOpen}
               >
-                {isRegistrationOpen ? "Reserve Your Spot — $800 CAD" : "Registration Opens Soon"}
+                {isOpen ? "Reserve Your Spot — $800 CAD" : "Registration Opens Soon"}
               </Button>
             )}
 
@@ -590,10 +598,10 @@ export default function TwoDayJan2026Page() {
           <Button
             className="w-full bg-primary hover:bg-blue-700 text-white shadow-lg"
             size="lg"
-            onClick={handleReservation}
-            disabled={!isRegistrationOpen}
+            onClick={isOpen ? handleReservation : scrollToCountdown}
+            disabled={!isOpen && false}
           >
-            {isRegistrationOpen ? "Reserve Your Spot — $800 CAD" : "Countdown to Register"}
+            {isOpen ? "Reserve Your Spot — $800 CAD" : "Countdown to Register"}
           </Button>
         </div>
       </div>
