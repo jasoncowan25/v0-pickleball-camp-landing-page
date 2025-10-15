@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { CheckCircle, Calendar, MapPin, Users, Target, Zap, Grid3X3 } from "lucide-react"
+import { CheckCircle, Calendar, MapPin, Users, Target, Zap, Grid3X3, Instagram } from "lucide-react"
 import { LAUNCH_CONFIG } from "@/lib/launch"
 import { getOpenInfo } from "@/lib/openState"
 import dynamic from "next/dynamic"
@@ -587,6 +587,18 @@ export default function TwoDayJan2026Page() {
                 <img src="/breakaway-logo-horizontal.png" alt="Breakaway Pickleball Camps" className="h-40 w-auto" />
               </div>
               <p className="text-gray-600 mt-4">Find Your Next Level.</p>
+              <div className="flex justify-center mt-4">
+                <a
+                  href="https://www.instagram.com/breakawaypickleball/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+                  aria-label="Follow us on Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                  <span>@breakawaypickleball</span>
+                </a>
+              </div>
               <p className="text-sm text-gray-500 mt-2">
                 All sales subject to terms. © 2026 Breakaway Pickleball Camps
               </p>
