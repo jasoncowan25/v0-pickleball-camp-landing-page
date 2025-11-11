@@ -3,7 +3,7 @@
 import type React from "react"
 import Head from "next/head"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -25,6 +25,15 @@ export default function TwoDayJan2026Page() {
   const [emailInput, setEmailInput] = useState("")
   const [emailStatus, setEmailStatus] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.log("[v0] Autoplay prevented:", err)
+      })
+    }
+  }, [])
 
   const { openAtIso, isOpen } = useMemo(() => getOpenInfo(), [])
 
@@ -173,7 +182,7 @@ export default function TwoDayJan2026Page() {
                   <h1 className="text-5xl lg:text-6xl font-bold text-primary text-balance">
                     16 Players. 2 Days. Big Results.
                   </h1>
-                  <p className="text-xl text-gray-600">Intermediate Camp (3.0–3.5) • Toronto • Jan 9–10, 2026</p>
+                  <p className="text-xl text-gray-600">Intermediate Camp (3.0–3.5) • Toronto • Jan 10–11, 2026</p>
                 </div>
 
                 <div className="space-y-4">
@@ -258,14 +267,17 @@ export default function TwoDayJan2026Page() {
 
               <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-200">
                 <video
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/joey-teaching-hero-ZvNmepU9kwj2rV74MQn26CKbimDXsn.mp4"
+                  ref={videoRef}
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Breakaway%20vid-mgLv7K3aRiP3QMRMmHxYhl0EexjFuf.mp4"
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="none"
+                  preload="auto"
                   className="w-full h-auto object-cover"
                   poster="/images/joey-video-poster.jpg"
+                  onError={(e) => console.log("[v0] Video error:", e)}
+                  onLoadedData={() => console.log("[v0] Video loaded successfully")}
                 />
                 <div className="absolute bottom-2 left-2 bg-gray-900/50 text-white text-xs px-2 py-1 rounded">
                   Coach Joey leading a training session.

@@ -108,7 +108,7 @@ export default function CountdownBPage() {
                 <h1 className="text-5xl lg:text-6xl font-bold text-primary text-balance">
                   16 Players. 2 Days. Big Results.
                 </h1>
-                <p className="text-xl text-gray-600">Intermediate Camp (3.0–3.5) • Toronto • Jan 9–10, 2026</p>
+                <p className="text-xl text-gray-600">Intermediate Camp (3.0–3.5) • Toronto • Jan 10–11, 2026</p>
               </div>
 
               <div className="space-y-4">

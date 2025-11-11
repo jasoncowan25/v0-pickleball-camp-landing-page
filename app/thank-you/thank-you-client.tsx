@@ -35,7 +35,7 @@ export default function ThankYouClient() {
             <h1 className="text-4xl md:text-5xl font-bold text-primary">Thanks for signing up!</h1>
 
             <p className="text-xl md:text-2xl text-gray-700 font-medium">
-              You're officially registered for Breakaway Pickleball Camp — January 9–10, 2026.
+              You're officially registered for Breakaway Pickleball Camp — January 10–11, 2026.
             </p>
 
             <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto">
