@@ -178,6 +178,12 @@ export default function TwoDayJan2026Page() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
                 <div className="space-y-4">
+                  <div className="flex justify-center lg:justify-start">
+                    <div className="bg-[#FFFBD6] text-primary px-4 py-3 rounded-lg shadow-sm inline-flex items-center gap-2 text-sm font-medium">
+                      <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span>Update Nov 17 • Spots are filling up... limited spots remain.</span>
+                    </div>
+                  </div>
                   <Badge className="bg-accent text-accent-foreground">Only 16 spots</Badge>
                   <h1 className="text-5xl lg:text-6xl font-bold text-primary text-balance">
                     16 Players. 2 Days. Big Results.
