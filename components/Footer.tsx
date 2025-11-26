@@ -13,7 +13,7 @@ export function Footer() {
         <div
           className="absolute h-full w-[200%] bg-[#FAFBFC] origin-top-right"
           style={{
-            transform: "rotate(25deg) translateX(50%)",
+            transform: "rotate(75deg) translateX(50%)",
             right: "50%",
           }}
         />
