@@ -4,7 +4,6 @@ export function Footer() {
   return (
     <footer className="bg-[#F9FAFB] border-t border-[#E5E7EB] relative">
       {/* Angled top edge (hero continuation) */}
-      
 
       <div className="relative max-w-4xl mx-auto px-6 py-12 text-center text-[#111827]/70">
         {/* Mini Nav */}
@@ -27,7 +26,7 @@ export function Footer() {
         </nav>
 
         {/* Contact */}
-        <p className="mt-6 text-sm">Contact: hello@breakawaycamps.ca</p>
+        <p className="mt-6 text-sm">Contact: breakawaypickleball@gmail.com</p>
 
         {/* Copyright */}
         <p className="mt-3 text-xs">© 2025 Breakaway Pickleball Camps. All rights reserved.</p>
