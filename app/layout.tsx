@@ -2,22 +2,23 @@ import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
-import { Inter } from 'next/font/google'
+import { Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import Script from "next/script"
 import "./globals.css"
 
-const inter = Inter({ 
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["600"], // SemiBold
+  variable: "--font-montserrat",
 })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://breakawaycamps.ca"),
-  title: "Breakaway Pickleball Camps — Pro-Level Training Nationwide",
+  title: "Toronto Intermediate Pickleball Camp — Jan 10–11, 2026 (3.0–3.5)",
   description:
-    "Premium pickleball training camps across North America. Small groups, professional coaching, results-oriented programs for intermediate to advanced players.",
+    "Two days of pro training in Toronto for 3.0–3.5 players. Small group, only 16 spots. $800 CAD (no tax). Lunch included, filtered water available.",
   generator: "v0.app",
   icons: {
     icon: "/favicon.ico",
@@ -58,7 +59,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${montserrat.variable}`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
