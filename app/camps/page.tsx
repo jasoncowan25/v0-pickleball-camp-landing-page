@@ -15,6 +15,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 function CampsPageContent() {
   const searchParams = useSearchParams()
   const [showFilters, setShowFilters] = useState(false)
+  const [selectedSkillLevels, setSelectedSkillLevels] = useState<string[]>([])
 
   const allCamps = [
     {
@@ -93,6 +94,14 @@ function CampsPageContent() {
     },
   ]
 
+  const toggleSkillLevel = (level: string) => {
+    setSelectedSkillLevels((prev) => (prev.includes(level) ? prev.filter((l) => l !== level) : [...prev, level]))
+  }
+
+  const handleApplyFilters = () => {
+    setShowFilters(false)
+  }
+
   const FilterSidebar = () => (
     <div className="space-y-6">
       <Accordion type="multiple" defaultValue={["locations", "skill", "format"]}>
@@ -117,7 +126,13 @@ function CampsPageContent() {
           <AccordionContent>
             <div className="flex flex-wrap gap-2">
               {["3.0", "3.5", "4.0+"].map((level) => (
-                <Button key={level} variant="outline" size="sm" className="rounded-full bg-transparent">
+                <Button
+                  key={level}
+                  variant={selectedSkillLevels.includes(level) ? "default" : "outline"}
+                  size="sm"
+                  className="rounded-full"
+                  onClick={() => toggleSkillLevel(level)}
+                >
                   {level}
                 </Button>
               ))}
@@ -173,19 +188,25 @@ function CampsPageContent() {
 
         {/* Mobile Filter Button */}
         <div className="md:hidden mb-6">
-          <Sheet>
+          <Sheet open={showFilters} onOpenChange={setShowFilters}>
             <SheetTrigger asChild>
               <Button variant="outline" className="w-full bg-transparent">
                 <Filter className="mr-2 h-4 w-4" />
                 Filters
               </Button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="h-[80vh]">
+            <SheetContent side="bottom" className="h-[80vh] flex flex-col">
               <SheetHeader>
                 <SheetTitle>Filter Camps</SheetTitle>
               </SheetHeader>
-              <div className="mt-6">
+              <div className="mt-6 px-4 flex-1 overflow-y-auto">
                 <FilterSidebar />
+              </div>
+              {/* Apply Filters button to mobile sheet */}
+              <div className="p-4 border-t bg-background">
+                <Button onClick={handleApplyFilters} className="w-full" size="lg">
+                  Apply Filters
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
